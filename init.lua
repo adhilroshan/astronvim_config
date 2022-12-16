@@ -639,7 +639,7 @@ toggleterm = {
   persist_size = true,
   direction = "float",
   close_on_exit = true,
-  shell = vim.o.shell,
+  shell = "pwsh",
   float_opts = {
     border = "curved",
     winblend = 0,
@@ -650,7 +650,10 @@ toggleterm = {
   },
 },
 treesitter = {
-  ensure_installed = {},
+  ensure_installed = {
+    "lua",
+    "javascript"
+  },
   auto_install=true,
   sync_install = true,
   ignore_install = {},
@@ -769,19 +772,19 @@ treesitter = {
       }
       return config -- return final config table
     end,
-    treesitter = { -- overrides `require("treesitter").setup(...)`
-      -- ensure_installed = { "lua" },
-    },
+    -- treesitter = { -- overrides `require("treesitter").setup(...)`
+    --   ensure_installed = { "lua" },
+    -- },
     -- use mason-lspconfig to configure LSP installations
     ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
-      -- ensure_installed = { "sumneko_lua" },
+      ensure_installed = { "sumneko_lua" },
     },
     -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
     ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
-      -- ensure_installed = { "prettier", "stylua" },
+      ensure_installed = { "prettier", "stylua" },
     },
     ["mason-nvim-dap"] = { -- overrides `require("mason-nvim-dap").setup(...)`
-      -- ensure_installed = { "python" },
+      ensure_installed = { "python" },
     },
   },
 

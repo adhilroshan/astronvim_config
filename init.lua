@@ -16,7 +16,7 @@ local config = {
     pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
     skip_prompts = false, -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
-    auto_reload = false, -- automatically reload and sync packer after a successful update
+    auto_reload = true, -- automatically reload and sync packer after a successful update
     auto_quit = false, -- automatically quit the current session after a successful update
     -- remotes = { -- easily add new remotes to track
     --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
@@ -24,7 +24,6 @@ local config = {
     --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
     -- },
   },
-
   -- Set colorscheme to use
   colorscheme = "default_theme",
 
@@ -463,82 +462,83 @@ packer = {
   auto_clean = true,
   compile_on_sync = true,
 },
--- aerial = {
---   close_behavior = "global",
---   backends = { "lsp", "treesitter", "markdown" },
---   min_width = 28,
---   show_guides = true,
---   filter_kind = {
---     "Array",
---     "Boolean",
---     "Class",
---     "Constant",
---     "Constructor",
---     "Enum",
---     "EnumMember",
---     "Event",
---     "Field",
---     "File",
---     "Function",
---     "Interface",
---     "Key",
---     "Method",
---     "Module",
---     "Namespace",
---     "Null",
---     "Number",
---     "Object",
---     "Operator",
---     "Package",
---     "Property",
---     "String",
---     "Struct",
---     "TypeParameter",
---     "Variable",
---   },
---   icons = {
---     Array = "",
---     Boolean = "⊨",
---     Class = "",
---     Constant = "",
---     Constructor = "",
---     Key = "",
---     Function = "",
---     Method = "ƒ",
---     Namespace = "",
---     Null = "NULL",
---     Number = "#",
---     Object = "⦿",
---     Property = "",
---     TypeParameter = "𝙏",
---     Variable = "",
---     Enum = "ℰ",
---     Package = "",
---     EnumMember = "",
---     File = "",
---     Module = "",
---     Field = "",
---     Interface = "ﰮ",
---     String = "𝓐",
---     Struct = "𝓢",
---     Event = "",
---     Operator = "+",
---   },
---   guides = {
---     mid_item = "├ ",
---     last_item = "└ ",
---     nested_top = "│ ",
---     whitespace = "  ",
---   },
---   on_attach = function(bufnr)
---     -- Jump forwards/backwards with '{' and '}'
---     vim.keymap.set("n", "{", "<cmd>AerialPrev<cr>", { buffer = bufnr, desc = "Jump backwards in Aerial" })
---     vim.keymap.set("n", "}", "<cmd>AerialNext<cr>", { buffer = bufnr, desc = "Jump forwards in Aerial" })
---     -- Jump up the tree with '[[' or ']]'
---     vim.keymap.set("n", "[[", "<cmd>AerialPrevUp<cr>", { buffer = bufnr, desc = "Jump up and backwards in Aerial" })
---     vim.keymap.set("n", "]]", "<cmd>AerialNextUp<cr>", { buffer = bufnr, desc = "Jump up and forwards in Aerial" })
---   end,
--- },
+aerial = {
+ attach_mode = "global
+ -- close_behavior = "global",
+  backends = { "lsp", "treesitter", "markdown" },
+  min_width = 28,
+  show_guides = true,
+  filter_kind = {
+    "Array",
+    "Boolean",
+    "Class",
+    "Constant",
+    "Constructor",
+    "Enum",
+    "EnumMember",
+    "Event",
+    "Field",
+    "File",
+    "Function",
+    "Interface",
+    "Key",
+    "Method",
+    "Module",
+    "Namespace",
+    "Null",
+    "Number",
+    "Object",
+    "Operator",
+    "Package",
+    "Property",
+    "String",
+    "Struct",
+    "TypeParameter",
+    "Variable",
+  },
+  icons = {
+    Array = "",
+    Boolean = "⊨",
+    Class = "",
+    Constant = "",
+    Constructor = "",
+    Key = "",
+    Function = "",
+    Method = "ƒ",
+    Namespace = "",
+    Null = "NULL",
+    Number = "#",
+    Object = "⦿",
+    Property = "",
+    TypeParameter = "𝙏",
+    Variable = "",
+    Enum = "ℰ",
+    Package = "",
+    EnumMember = "",
+    File = "",
+    Module = "",
+    Field = "",
+    Interface = "ﰮ",
+    String = "𝓐",
+    Struct = "𝓢",
+    Event = "",
+    Operator = "+",
+  },
+  guides = {
+    mid_item = "├ ",
+    last_item = "└ ",
+    nested_top = "│ ",
+    whitespace = "  ",
+  },
+  on_attach = function(bufnr)
+    -- Jump forwards/backwards with '{' and '}'
+    vim.keymap.set("n", "{", "<cmd>AerialPrev<cr>", { buffer = bufnr, desc = "Jump backwards in Aerial" })
+    vim.keymap.set("n", "}", "<cmd>AerialNext<cr>", { buffer = bufnr, desc = "Jump forwards in Aerial" })
+    -- Jump up the tree with '[[' or ']]'
+    vim.keymap.set("n", "[[", "<cmd>AerialPrevUp<cr>", { buffer = bufnr, desc = "Jump up and backwards in Aerial" })
+    vim.keymap.set("n", "]]", "<cmd>AerialNextUp<cr>", { buffer = bufnr, desc = "Jump up and forwards in Aerial" })
+  end,
+},
 -- telescope = {
 --   defaults = {
 --
@@ -659,7 +659,7 @@ treesitter = {
   ignore_install = {},
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false,
+  --   additional_vim_regex_highlighting = false,
   },
   context_commentstring = {
     enable = true,
@@ -676,7 +676,7 @@ treesitter = {
   },
   rainbow = {
     enable = true,
-    disable = { "html" },
+    -- disable = { "html" },
     extended_mode = false,
     max_file_lines = nil,
   },
@@ -737,8 +737,16 @@ treesitter = {
     init = {
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
-
-      -- You can also add new plugins here as well:
+      {
+ 'wakatime/vim-wakatime'},
+  {'neoclide/coc.nvim', branch = 'release'},
+  {
+    'aca/completion-tabnine'
+  }, {
+'tbodt/deoplete-tabnine'
+  },{'tzachar/cmp-tabnine', after = "nvim-cmp", run='powershell ./install.ps1', requires = 'hrsh7th/nvim-cmp'},
+  {"hrsh7th/nvim-compe"}, {'tzachar/compe-tabnine', run='powershell ./install.sh', requires = 'hrsh7th/nvim-compe'}
+  -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
       -- { "andweeb/presence.nvim" },
       -- {

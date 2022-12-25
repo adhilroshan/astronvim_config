@@ -463,10 +463,10 @@ packer = {
   compile_on_sync = true,
 },
 aerial = {
- attach_mode = "global
+ attach_mode = "global",
  -- close_behavior = "global",
   backends = { "lsp", "treesitter", "markdown" },
-  min_width = 28,
+  -- min_width = 28,
   show_guides = true,
   filter_kind = {
     "Array",
@@ -737,6 +737,18 @@ treesitter = {
     init = {
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
+       { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' },
+       {"EdenEast/nightfox.nvim" },
+{'romgrk/barbar.nvim', wants = 'nvim-web-devicons'},
+       { 'editorconfig/editorconfig-vim'},
+       {
+  'phaazon/hop.nvim',
+  branch = 'v2', -- optional but strongly recommended
+  config = function()
+    -- you can configure Hop the way you like here; see :h hop-config
+    require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+  end
+},
       {
  'wakatime/vim-wakatime'},
   {'neoclide/coc.nvim', branch = 'release'},
@@ -744,8 +756,8 @@ treesitter = {
     'aca/completion-tabnine'
   }, {
 'tbodt/deoplete-tabnine'
-  },{'tzachar/cmp-tabnine', after = "nvim-cmp", run='powershell ./install.ps1', requires = 'hrsh7th/nvim-cmp'},
-  {"hrsh7th/nvim-compe"}, {'tzachar/compe-tabnine', run='powershell ./install.sh', requires = 'hrsh7th/nvim-compe'}
+  },{'tzachar/cmp-tabnine', after = "nvim-cmp", run='pwsh ./install.ps1', requires = 'hrsh7th/nvim-cmp'},
+  {"hrsh7th/nvim-compe"}, {'tzachar/compe-tabnine', run='pwsh ./install.sh', requires = 'hrsh7th/nvim-compe'}
   -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
       -- { "andweeb/presence.nvim" },
@@ -817,7 +829,7 @@ treesitter = {
   -- true == 1000
   cmp = {
     source_priority = {
-      nvim_lsp = 1000,
+  nvim_lsp = 1000,
       luasnip = 750,
       buffer = 500,
       path = 250,

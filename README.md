@@ -8,10 +8,10 @@ If you want to use AstroNvim, check out: [AstroNvim](https://github.com/kabinspa
 
 ### Linux
 ```bash
-  git clone https://github.com/adhilroshan/astrovim_config ~/.config/nvim/lua/user
+  git clone https://github.com/adhilroshan/astronvim_config ~/.config/nvim/lua/user
 ```
 
 ### Windows
 ```bash
-  git clone https://github.com/adhilroshan/astrovim_config $env:LOCALAPPDATA\nvim\lua\user
+  git clone https://github.com/adhilroshan/astronvim_config $env:LOCALAPPDATA\nvim\lua\user
 ```

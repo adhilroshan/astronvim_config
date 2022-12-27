@@ -19,10 +19,10 @@ return {
     },
     {
         "phaazon/hop.nvim",
-        branch = "v1", -- optional but strongly recommended
+        branch = "v2", -- optional but strongly recommended
         event = "BufRead",
         config = function()
-            require("hop").setup()
+            require("hop").setup{ keys = 'etovxqpdygfblzhckisuran'}
         end
     },
     ["ray-x/lsp_signature.nvim"] = {
@@ -97,5 +97,19 @@ return {
             require "user.plugins.tabnine"
         end
     },
-    {'wakatime/vim-wakatime'}
+    {'wakatime/vim-wakatime'},
+    {"lukas-reineke/cmp-under-comparator"},
+    {
+  "utilyre/barbecue.nvim",
+  branch = "dev", -- omit this if you only want stable updates
+  requires = {
+    "neovim/nvim-lspconfig",
+    "smiteshp/nvim-navic",
+    "kyazdani42/nvim-web-devicons", -- optional dependency
+  },
+  after = "nvim-web-devicons", -- keep this if you're using NvChad
+  config = function()
+    require "user.plugins.barbecue"
+  end,
+}
 }
